@@ -15,6 +15,7 @@ gem 'webpacker', github: "rails/webpacker"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'standard'
 end
 
 group :development do
@@ -32,3 +33,4 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
