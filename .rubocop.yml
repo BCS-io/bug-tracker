@@ -1,0 +1,18 @@
+require:
+  - standard
+  - rubocop-rails
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+    - db/migrate/**/*
+    - node_modules/**/*
+    - config/environments/**/*
+    - vendor/**/*
+
+Rails:
+  Enabled: true
