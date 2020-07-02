@@ -1,0 +1,9 @@
+<header class="text-gray-500 bg-gray-900 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <%= render "layouts/brand", path: root_path %>
+    <div class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <%= link_to "Sign in", new_account_session_path, class: "btn btn-outline btn-small mr-2" %>
+      <%= link_to "Create account", new_account_registration_path, class: "btn btn-primary btn-small" %>
+    </div>
+  </div>
+</header>
