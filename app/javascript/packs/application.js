@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 
 import 'alpinejs';
+import 'controllers';
 import 'stylesheets/application';
 
 require('@rails/ujs').start();

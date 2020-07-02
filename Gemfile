@@ -10,6 +10,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", github: "rails/rails", branch: "6-0-stable"
 gem "sass-rails", ">= 6"
+gem "stimulus_reflex", "~> 3.2"
 gem "turbolinks", "~> 5"
 gem "webpacker", github: "rails/webpacker"
 
