@@ -1,0 +1,26 @@
+# EXAMPLE USAGE
+# Refer for explanation to following link:
+# https://github.com/Arkweid/lefthook/blob/master/docs/full_guide.md
+#
+pre-push:
+  parallel: true
+  commands:
+    gems-audit:
+      run: bundle audit --update
+    tests:
+      run: bundle exec rails test
+    tests-system:
+      run: bundle exec rails test:system
+
+pre-commit:
+  parallel: true
+  commands:
+    frontend-linter:
+      glob: "*.{js,ts}"
+      run: yarn eslint {staged_files}
+    backend-linter:
+      glob: "*.{rb}"
+      run: bundle exec rubocop --force-exclusion {staged_files}
+    frontend-style:
+      glob: '*.{css,scss}'
+      run: yarn stylelint {staged_files}
