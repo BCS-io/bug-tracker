@@ -17,6 +17,7 @@ gem "webpacker", github: "rails/webpacker"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "bundler-audit"
   gem "brakeman"
   gem "factory_bot_rails"
   gem "faker"
