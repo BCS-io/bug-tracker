@@ -145,6 +145,9 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.3)
       concurrent-ruby (~> 1.0)
+    inline_svg (1.7.1)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -288,6 +291,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   factory_bot_rails
   faker
+  inline_svg (~> 1.7.0)
   listen (~> 3.2)
   minitest-reporters
   nested_scaffold
