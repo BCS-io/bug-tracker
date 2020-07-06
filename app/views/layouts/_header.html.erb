@@ -1,0 +1,10 @@
+<header class="flex items-center justify-between px-4 py-3 bg-gray-900">
+  <div>
+    <%= render "layouts/brand", path: account_root_path %>
+  </div>
+  <div>
+    <button type="button" class="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
+      <%= render_svg "hamburger-to-x", styles: "h-6 w-6" %>
+    </button>
+  </div>
+</header>
