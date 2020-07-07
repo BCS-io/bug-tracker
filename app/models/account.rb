@@ -5,6 +5,8 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :rememberable, :validatable
 
+  has_many :leads, class_name: "Project", foreign_key: "lead_id", inverse_of: "lead", dependent: :destroy
+
   validates :username, presence: true, uniqueness: true
   validates :role, inclusion: {in: roles.keys}
 end

@@ -1,0 +1,29 @@
+<section class="text-gray-500 bg-gray-900 body-font">
+  <div class="container px-5 py-4 mx-auto">
+    <div class="flex pl-4 mt-4 w-full mx-auto mb-6">
+      <h1 class="text-3xl font-medium title-font text-white">Projects</h1>
+      <button class="flex ml-auto btn btn-primary btn-primary:hover">Create project</button>
+    </div>
+
+    <div class="w-full mx-auto overflow-auto">
+      <table class="table-fixed w-full text-left whitespace-no-wrap">
+        <thead>
+          <tr>
+            <th class="w-1/2 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">Name</th>
+            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Key</th>
+            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Lead</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td class="px-4 py-3"><%= project.name %></td>
+              <td class="px-4 py-3"><%= project.key %></td>
+              <td class="px-4 py-3"><%= project.username %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
