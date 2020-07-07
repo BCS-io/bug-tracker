@@ -4,9 +4,9 @@
 // that code so it'll be compiled.
 
 import 'alpinejs';
+import 'stylesheets/application';
 
 require('@rails/ujs').start();
 require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
-require('css/application.scss');
