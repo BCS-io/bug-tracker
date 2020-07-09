@@ -13,6 +13,8 @@ module Session
       click_on "Sign in"
 
       assert_selector "p", text: "Signed in successfully."
+      assert_current_path projects_path
+      assert_selector :link, text: "Bug Tracker", href: account_root_path
     end
 
     test "can display errors" do
