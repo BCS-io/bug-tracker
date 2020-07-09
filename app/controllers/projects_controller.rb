@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_account!
+
   def index
     @projects = Project.includes(:lead)
       .joins(:lead)
