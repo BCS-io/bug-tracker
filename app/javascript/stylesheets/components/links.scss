@@ -1,0 +1,19 @@
+.link {
+  @apply no-underline;
+}
+
+.link-grey {
+  @apply text-gray-400;
+}
+
+.link-grey:hover {
+  @apply underline text-gray-200;
+}
+
+.link-primary {
+  @apply text-red-500;
+}
+
+.link-primary:hover {
+  @apply text-red-500;
+}
