@@ -3,7 +3,7 @@ require "application_system_test_case"
 module Accounts
   class AccountEditTest < ApplicationSystemTestCase
     def setup
-      @account = create(:account, email: "guest@example.com", password: "password")
+      @account = create(:account, username: "guest", email: "guest@example.com", password: "password")
       sign_in @account
     end
 
@@ -12,6 +12,7 @@ module Accounts
 
       assert_selector "h1", text: "Edit Account"
       assert_selector :link, text: "Sign out", href: destroy_account_session_path
+      fill_in "Username", with: "account"
       fill_in "Email", with: "account@example.com"
       fill_in "Current password", with: "password"
 
@@ -19,6 +20,7 @@ module Accounts
 
       @account.reload
       assert_selector "p", text: "Your account has been updated successfully."
+      assert_equal "account", @account.username
       assert_equal "account@example.com", @account.email
     end
 

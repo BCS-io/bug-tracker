@@ -6,6 +6,7 @@ module Accounts
       visit new_account_registration_url
 
       assert_selector "h1", text: "Create account"
+      fill_in "Username", with: "guest"
       fill_in "Email", with: "guest@example.com"
       fill_in "Password", with: "password"
       fill_in "Password confirmation", with: "password"
