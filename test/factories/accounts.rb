@@ -1,7 +1,11 @@
 FactoryBot.define do
   factory :account do
-    username { Faker::Internet.username }
-    email { Faker::Internet.email }
+    transient do
+      name { Faker::Internet.unique.username }
+    end
+
+    username { name }
+    email { Faker::Internet.safe_email(name: name) }
     password { "password" }
     password_confirmation { password }
     role { 0 }
