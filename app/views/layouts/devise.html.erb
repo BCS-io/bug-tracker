@@ -17,8 +17,7 @@
         <%= render "layouts/brand", path: root_path %>
       </div>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

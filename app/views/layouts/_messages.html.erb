@@ -1,0 +1,21 @@
+<% flash.each do |type, message| %>
+  <% if type == "alert" %>
+    <div class="bg-red-500">
+      <p class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans">
+        <%= message %>
+      </p>
+    </div>
+  <% end %>
+
+  <% if type == "notice" %>
+    <div class="mb-8 block bg-green-600 border border-green-500 h-14 flex items-center p-6 rounded-sm relative" role="alert">
+      <p class="container mx-auto text-gray-100 text-center font-medium">
+          <%= render_svg("info-circle", styles: "inline-block w-7 h-7 text-white mr-3") %>
+          <%= message %>
+      </p>
+      <button type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+          <span class="absolute top-0 bottom-0 right-2 text-4xl px-3 text-green-800 hover:text-green-900" aria-hidden="true" >×</span>
+      </button>
+    </div>
+  <% end %>
+<% end %>
