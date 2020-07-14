@@ -8,9 +8,24 @@
       <table class="table-fixed w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
-            <th class="w-1/2 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800 rounded-tl rounded-bl">Name</th>
-            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800">Key</th>
-            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800">Lead</th>
+            <th class="w-1/2 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800 rounded-tl rounded-bl">
+              <%= link_to "Name #{arrow :name, @order_by, sort: @direction}", "#",
+                          data: { reflex: "click->TabularReflex#order",
+                          column_name: :name,
+                          direction: direction(@direction) } %>
+            </th>
+            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800">
+              <%= link_to "Key #{arrow :key, @order_by, sort: @direction}", "#",
+                          data: { reflex: "click->TabularReflex#order",
+                          column_name: :key,
+                          direction: direction(@direction) } %>
+            </th>
+            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white bg-gray-800">
+              <%= link_to "Lead #{arrow :lead, @order_by, sort: @direction}", "#",
+                          data: { reflex: "click->TabularReflex#order",
+                          column_name: :lead,
+                          direction: direction(@direction) } %>
+            </th>
           </tr>
         </thead>
         <tbody>
