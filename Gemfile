@@ -9,6 +9,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "devise", "~> 4.7"
 gem "inline_svg", "~> 1.7.0"
 gem "optimism", "~> 0.3.4"
+gem "pagy"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "pundit", "~> 2.1"
