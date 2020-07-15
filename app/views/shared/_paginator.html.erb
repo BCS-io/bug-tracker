@@ -1,0 +1,39 @@
+<nav class="relative z-0 inline-flex shadow-sm">
+  <ul class="flex list-reset border border-gray-800 rounded w-auto font-sans">
+    <li>
+      <a href="#" class="block hover:text-white hover:bg-blue text-blue border-r border-gray-800 px-5 py-2 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-300 active:text-gray-500 transition ease-in-out duration-150"
+                  aria-label="Previous"
+                  data-reflex="click->TabularReflex#paginate"
+                  data-reflex-root="#projects-table"
+                  data-page="<%= prev_page(@pagy) %>">
+        ←
+      </a>
+    </li>
+    <% @pagy.series.each do |item| %>
+      <% if item == :gap %>
+        <li class="page-item disabled"><a class="page-link">...</a></li>
+      <% else %>
+        <li class="page-item <%= "active" if item.is_a?(String) %>">
+
+          <a href="#"class="block hover:text-white hover:bg-blue text-blue border-r border-gray-800 px-5 py-2 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-300 active:text-gray-500 transition ease-in-out duration-150"
+                      data-reflex="click->TabularReflex#paginate"
+                      data-reflex-root="#projects-table"
+                      data-page="<%= item %>">
+            <%= item %>
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+
+    <li>
+      <a href="#" class="block hover:text-white hover:bg-blue text-blue border-gray-800 px-5 py-2 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-300 active:text-gray-500 transition ease-in-out duration-150"
+                  aria-label="Next"
+                  data-reflex="click->TabularReflex#paginate"
+                  data-reflex-root="#projects-table"
+                  data-page="<%= next_page(@pagy) %>">
+        →
+      </a>
+    </li>
+  </a>
+  </ul>
+</nav>

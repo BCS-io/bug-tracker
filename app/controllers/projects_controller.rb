@@ -1,13 +1,20 @@
 class ProjectsController < ApplicationController
+  include Pagy::Backend
   before_action :authenticate_account!
 
   def index
     @direction = permitted_direction(session[:direction])
     @order_by = ProjectTableColumn.new(session[:order_by]).safe_table_column
-    @projects = Project.includes(:lead)
+    projects = Project.includes(:lead)
       .joins(:lead)
       .select("projects.id, projects.name, projects.key, accounts.username as username")
       .order(ProjectTableColumn.new(@order_by).sql_column => @direction)
+
+    page_count = (projects.count / Pagy::VARS[:items].to_f).ceil
+
+    @page = (session[:page] || 1).to_i
+    @page = page_count if @page > page_count
+    @pagy, @projects = pagy(projects, page: @page)
     authorize @projects
   end
 
