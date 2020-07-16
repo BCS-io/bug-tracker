@@ -6,40 +6,7 @@
     </div>
 
     <div class="w-full mx-auto overflow-auto">
-      <table class="table-fixed w-full text-left whitespace-no-wrap mb-2">
-        <thead>
-          <tr>
-            <th class="w-1/2 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">
-              <%= link_to "Name #{arrow :name, @order_by, sort: @direction}", "#",
-                          data: { reflex: "click->TabularReflex#order",
-                          column_name: :name,
-                          direction: direction(@direction) } %>
-            </th>
-            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
-              <%= link_to "Key #{arrow :key, @order_by, sort: @direction}", "#",
-                          data: { reflex: "click->TabularReflex#order",
-                          column_name: :key,
-                          direction: direction(@direction) } %>
-            </th>
-            <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
-              <%= link_to "Lead #{arrow :lead, @order_by, sort: @direction}", "#",
-                          data: { reflex: "click->TabularReflex#order",
-                          column_name: :lead,
-                          direction: direction(@direction) } %>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @projects.each do |project| %>
-            <tr>
-              <td class="px-4 py-3"><%= project.name %></td>
-              <td class="px-4 py-3"><%= project.key %></td>
-              <td class="px-4 py-3"><%= project.username %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+      <%= render "projects/table", projects: @projects, order_by: @order_by, sort: @direction %>
       <%= render "shared/paginator" if @pagy.pages > 1 %>
     </div>
   </div>
