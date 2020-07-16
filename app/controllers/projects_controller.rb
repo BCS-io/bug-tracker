@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_account!
 
   def index
+    query = session[:query]
     @direction = permitted_direction(session[:direction])
     @order_by = ProjectTableColumn.new(session[:order_by]).safe_table_column
     projects = Project.includes(:lead)
@@ -10,6 +11,7 @@ class ProjectsController < ApplicationController
       .select("projects.id, projects.name, projects.key, accounts.username as username")
       .order(ProjectTableColumn.new(@order_by).sql_column => @direction)
 
+    projects = projects.search(query) if query.present?
     @page = (session[:page] || 1).to_i
     @pagy, @projects = pagy(projects, page: @page)
     authorize @projects

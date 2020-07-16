@@ -1,6 +1,10 @@
 class TabularReflex < ApplicationReflex
   delegate :current_account, to: :connection
 
+  def search
+    session[:query] = element[:value].strip
+  end
+
   def order
     session[:order_by] = element.dataset["column-name"]
     session[:direction] = element.dataset["direction"]

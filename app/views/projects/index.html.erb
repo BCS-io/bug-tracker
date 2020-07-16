@@ -1,13 +1,36 @@
 <section class="text-gray-500 bg-gray-900 body-font">
   <div class="container px-5 py-4 mx-auto">
-    <div class="flex pl-4 mt-4 w-full mx-auto mb-6">
-      <h1 class="text-3xl font-medium title-font text-white">Projects</h1>
-      <button class="flex ml-auto btn btn-primary btn-primary:hover">Create project</button>
+    <div class="flex justify-between items-center w-full mx-auto mb-6">
+      <h1 class="text-3xl font-medium title-font text-white mr-4">Projects</h1>
+
+      <div class="flex-shrink mr-2">
+        <div class="relative rounded-md shadow-sm">
+          <input id="search"
+                 type="text"
+                 class="form-control form-control-lg w-full py-1 pl-2 pr-12 rounded"
+                 placeholder="Search..."
+                 value="<%= @query %>"
+                 data-reflex="input->TabularReflex#search"
+                 data-reflex-root="#search-results">
+
+          <div class="absolute inset-y-0 right-2 flex items-center">
+            <%= render_svg "search", styles: "text-gray-600 h-4 w-4 fill-current" %>
+         </div>
+        </div>
+      </div>
+
+      <button class="btn btn-outline btn-small btn-primary:hover flex-shrink-0 text-xs md:text-sm">Create project</button>
     </div>
 
+
     <div class="w-full mx-auto overflow-auto">
-      <%= render "projects/table", projects: @projects, order_by: @order_by, sort: @direction %>
-      <%= render "shared/paginator" if @pagy.pages > 1 %>
+      <div id="search-results">
+        <p class="lead"><%= @pagy&.count || 0 %> results found</p>
+        <% if @pagy&.count || 0 > 0 %>
+          <%= render "projects/table", projects: @projects, order_by: @order_by, sort: @direction %>
+          <%= render "shared/paginator" if @pagy.pages > 1 %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
