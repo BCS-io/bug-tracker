@@ -1,0 +1,23 @@
+<%= form_with(model: project) do |form| %>
+  <%= form.container_for :name, class: "mb-8" do %>
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input" %>
+    <%= form.error_for :name, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <%= form.container_for :key, class: "mb-8" do %>
+    <%= form.label :key, class: "label" %>
+    <%= form.text_field :key, class: "input" %>
+    <%= form.error_for :key, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <%= form.container_for :description, class: "mb-8" do %>
+    <%= form.label :description, class: "label" %>
+    <%= form.text_field :description, class: "input" %>
+    <%= form.error_for :description, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <div class="mb-10">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
