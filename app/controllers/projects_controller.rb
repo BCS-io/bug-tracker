@@ -17,7 +17,32 @@ class ProjectsController < ApplicationController
     authorize @projects
   end
 
+  def new
+    @project = Project.new
+    authorize @project
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.lead = current_account
+
+    if @project.save
+      redirect_to projects_path, notice: "Project was successfully created."
+    else
+      broadcast_errors @project, project_params
+    end
+    authorize @project
+  end
+
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def project_params
+    params.require(:project).permit(:name, :key, :description)
+  end
 
   def permitted_direction(direction)
     %w[asc desc].find { |permitted| direction == permitted } || "asc"

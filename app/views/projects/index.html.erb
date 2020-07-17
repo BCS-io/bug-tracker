@@ -18,6 +18,11 @@
          </div>
         </div>
       </div>
+
+      <%= link_to new_project_path, class: "flex items-center justify-center btn btn-outline ml-4 h-8 border-2 btn-primary:hover flex-shrink-0 text-xs md:text-sm focus:outline-none focus:border-white" do %>
+        <%= render_svg "plus", styles: "inline-block h-6 text-gray-300 focus:text-white hover:text-white fill-current" %>
+        <span class="hidden sm:inline-block sm:pr-1">Create</span>
+      <% end %>
     </div>
 
     <div class="mt-2 w-full mx-auto">
