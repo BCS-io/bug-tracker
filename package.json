@@ -8,6 +8,9 @@
     "@rails/webpacker": "5.1.1",
     "turbolinks": "^5.2.0"
   },
+  "scripts": {
+    "lint": "eslint --fix --ext .js app/javascript"
+  },
   "version": "0.1.0",
   "devDependencies": {
     "eslint": "^7.4.0",
