@@ -1,4 +1,4 @@
-import ApplicationController from './application_controller'
+import ApplicationController from './application_controller';
 
 /* This is the custom StimulusReflex controller for ExampleReflex.
  * Learn more at: https://docs.stimulusreflex.com
