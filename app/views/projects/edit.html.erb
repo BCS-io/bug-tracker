@@ -1,0 +1,9 @@
+<%= content_for :primary_content do %>
+  <div>
+    <h1 class="text-3xl text-white">Edit project</h1>
+
+    <%= render 'form', project: @project %>
+  </div>
+<% end %>
+
+<%= render "shared/basic_layout" %>

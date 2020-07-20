@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   include ApplicationHelper
   include Pagy::Backend
   before_action :authenticate_account!
+  before_action :set_project, only: [:edit, :update]
 
   def index
     @query = params[:query]
@@ -22,6 +23,9 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def edit
+  end
+
   def create
     @project = Project.new(project_params)
     @project.lead = current_account
@@ -34,10 +38,19 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def update
+    if @project.update(project_params)
+      redirect_to projects_path, notice: "Project was successfully updated."
+    else
+      broadcast_errors @project, project_params
+    end
+  end
+
   private
 
   def set_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def project_params
