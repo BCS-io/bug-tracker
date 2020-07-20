@@ -1,33 +1,41 @@
 <table class="table-fixed w-full text-left whitespace-no-wrap mb-2">
   <thead>
     <tr>
-      <th class="w-1/2 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">
+      <th class="w-3/8 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">
         <%= link_to "Name #{arrow :name, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :name,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
+      <th class="w-2/8 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
         <%= link_to "Key #{arrow :key, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :key,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-1/4 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
+      <th class="w-2/8 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
         <%= link_to "Lead #{arrow :lead, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :lead,
                     direction: direction(sort) } %>
       </th>
+      <th class="w-1/8 px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">
+        Edit
+      </th>
     </tr>
   </thead>
   <tbody>
-    <% projects.each do |project| %>
+    <% projects.each_with_index do |project, index| %>
       <tr>
         <td class="px-4 py-3"><%= project.name %></td>
         <td class="px-4 py-3"><%= project.key %></td>
         <td class="px-4 py-3"><%= project.username %></td>
-      </tr>
+        <td class="px-4 py-3 <%= "edit-project-#{index}" %>">
+          <%= link_to edit_project_path(project) do
+            render_svg "pencil", styles: "h-6 text-gray-600 hover:text-white"
+          end %>
+        </td>
+     </tr>
     <% end %>
   </tbody>
 </table>
