@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   include ApplicationHelper
   include Pagy::Backend
   before_action :authenticate_account!
-  before_action :set_project, only: [:edit, :update]
+  before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
     @query = params[:query]
@@ -44,6 +44,11 @@ class ProjectsController < ApplicationController
     else
       broadcast_errors @project, project_params
     end
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to projects_path, notice: "Project was successfully destroyed."
   end
 
   private

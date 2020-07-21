@@ -1,26 +1,30 @@
+
 <table class="table-fixed w-full text-left whitespace-no-wrap mb-2">
   <thead>
     <tr>
-      <th class="w-3/8 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
+      <th class="w-4/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
         <%= link_to "Name #{arrow :name, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :name,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-2/8 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+      <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <%= link_to "Key #{arrow :key, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :key,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-2/8 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+      <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <%= link_to "Lead #{arrow :lead, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :lead,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-1/8 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+      <th class="w-1/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         Edit
+      </th>
+      <th class="w-1/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+        Del
       </th>
     </tr>
   </thead>
@@ -35,7 +39,12 @@
             render_svg "pencil", styles: "h-6 text-gray-600 hover:text-white"
           end %>
         </td>
-     </tr>
+        <td class="px-4 py-2 <%= "delete-project-#{index}" %>">
+          <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } do
+            render_svg "trash", styles: "h-6 text-gray-600 hover:text-white"
+          end %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
