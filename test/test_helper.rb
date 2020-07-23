@@ -13,4 +13,14 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   include FactoryBot::Syntax::Methods
+
+  def permit(current_account, record, action)
+    Pundit.authorize(current_account, record, action)
+  rescue Pundit::NotAuthorizedError
+    false
+  end
+
+  def forbid(current_account, record, action)
+    !permit(current_account, record, action)
+  end
 end
