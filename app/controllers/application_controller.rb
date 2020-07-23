@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   before_action :set_action_cable_identifier
+
+  def pundit_user
+    current_account
+  end
 
   private
 
