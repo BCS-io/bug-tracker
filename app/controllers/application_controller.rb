@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  after_action :verify_authorized
   before_action :set_action_cable_identifier
 
   def pundit_user
