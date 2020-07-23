@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  after_action :verify_authorized
+  after_action :verify_authorized, unless: :devise_controller?
   before_action :set_action_cable_identifier
 
   def pundit_user
