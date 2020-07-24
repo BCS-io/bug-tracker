@@ -34,15 +34,19 @@
         <td class="px-4 py-2"><%= project.name %></td>
         <td class="px-4 py-2"><%= project.key %></td>
         <td class="px-4 py-2"><%= project.username %></td>
-        <td class="px-4 py-2 <%= "edit-project-#{index}" %>">
-          <%= link_to edit_project_path(project) do
-            render_svg "pencil", styles: "h-6 text-gray-600 hover:text-white"
-          end %>
+        <td id="<%= "edit-project-#{index}" %>" class="px-4 py-2">
+          <% if policy(project).update? %>
+            <%= link_to edit_project_path(project) do
+              render_svg "pencil", styles: "h-6 text-gray-600 hover:text-white"
+            end %>
+          <% end %>
         </td>
-        <td class="px-4 py-2 <%= "delete-project-#{index}" %>">
-          <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } do
-            render_svg "trash", styles: "h-6 text-gray-600 hover:text-white"
-          end %>
+        <td id="<%= "destroy-project-#{index}" %>" class="px-4 py-2 ">
+          <% if policy(project).destroy? %>
+            <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } do
+              render_svg "trash", styles: "h-6 text-gray-600 hover:text-white"
+            end %>
+          <% end %>
         </td>
       </tr>
     <% end %>
