@@ -1,24 +1,34 @@
 
-<table class="table-fixed w-full text-left whitespace-no-wrap mb-2">
+<table id="projects-table"
+       class="table-fixed w-full text-left whitespace-no-wrap">
   <thead>
     <tr>
       <th class="w-4/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
-        <%= link_to "Name #{arrow :name, order_by, sort: sort}", "#",
-                    data: { reflex: "click->TabularReflex#order",
-                    column_name: :name,
-                    direction: direction(sort) } %>
+        <a href="#"
+           data-reflex="click->TabularReflex#order"
+           data-reflex-root="#projects-table"
+           data-column-name="name"
+           data-direction=<%= direction(sort) %>>
+           Name <span class="pl-1 font-bold"> <%= arrow :name, order_by, sort: sort %></span>
+        </a>
       </th>
       <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
-        <%= link_to "Key #{arrow :key, order_by, sort: sort}", "#",
-                    data: { reflex: "click->TabularReflex#order",
-                    column_name: :key,
-                    direction: direction(sort) } %>
+        <a href="#"
+           data-reflex="click->TabularReflex#order"
+           data-reflex-root="#projects-table"
+           data-column-name="key"
+           data-direction=<%= direction(sort) %>>
+           Key <span class="pl-1 font-bold"><%= arrow :key, order_by, sort: sort %></span>
+        </a>
       </th>
       <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
-        <%= link_to "Lead #{arrow :lead, order_by, sort: sort}", "#",
-                    data: { reflex: "click->TabularReflex#order",
-                    column_name: :lead,
-                    direction: direction(sort) } %>
+        <a href="#"
+           data-reflex="click->TabularReflex#order"
+           data-reflex-root="#projects-table"
+           data-column-name="lead"
+           data-direction=<%= direction(sort) %>>
+           Lead <span class="pl-1 font-bold"><%= arrow :lead, order_by, sort: sort %></span>
+        </a>
       </th>
       <th class="w-1/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         Edit
