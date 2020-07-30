@@ -4,6 +4,8 @@
 import { Application } from 'stimulus';
 import { definitionsFromContext } from 'stimulus/webpack-helpers';
 import StimulusReflex from 'stimulus_reflex';
+import { Alert, Dropdown } from 'tailwindcss-stimulus-components';
+
 import consumer from '../channels/consumer';
 import controller from './application_controller';
 
@@ -15,3 +17,5 @@ StimulusReflex.initialize(application, {
   controller,
   debug: false,
 });
+application.register('alert', Alert);
+application.register('dropdown', Dropdown);
