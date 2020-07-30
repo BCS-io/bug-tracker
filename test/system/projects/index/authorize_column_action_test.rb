@@ -10,8 +10,13 @@ module Projects
 
         visit projects_url
 
-        assert_selector :css, "#edit-project-0 > a"
-        assert_selector :css, "#destroy-project-0 > a"
+        assert_no_text "Edit"
+        assert_no_text "Delete"
+
+        find("#project-action-0").click
+
+        assert_text "Edit"
+        assert_text "Destroy"
       end
 
       test "user does not modify another accounts records" do
@@ -22,8 +27,8 @@ module Projects
 
         visit projects_url
 
-        assert_no_selector :css, "#edit-project-0 > a"
-        assert_no_selector :css, "#destroy-project-0 > a"
+        assert_selector :css, "#project-action-cell-0"
+        assert_no_selector :css, "#project-action-0"
       end
 
       test "admin can modify all records" do
@@ -34,8 +39,10 @@ module Projects
 
         visit projects_url
 
-        assert_selector :css, "#edit-project-0 > a"
-        assert_selector :css, "#destroy-project-0 > a"
+        find("#project-action-0").click
+
+        assert_text "Edit"
+        assert_text "Destroy"
       end
     end
   end

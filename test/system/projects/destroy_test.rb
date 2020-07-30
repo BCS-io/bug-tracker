@@ -8,8 +8,10 @@ module Projects
       sign_in account
       visit projects_url
 
+      find("#project-action-0").click
+
       page.accept_confirm do
-        find("#destroy-project-0").click
+        click_on("Destroy")
       end
 
       assert_text "Project was successfully destroyed"

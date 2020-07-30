@@ -8,7 +8,8 @@ module Projects
       sign_in account
       visit projects_url
 
-      find("#edit-project-0").click
+      find("#project-action-0").click
+      click_on "Edit"
 
       fill_in "Name", with: "Edit project"
       fill_in "Key", with: "NK"
@@ -28,7 +29,9 @@ module Projects
       sign_in account
       visit projects_url
 
-      find("#edit-project-0").click
+      find("#project-action-0").click
+      click_on "Edit"
+
       fill_in "Name", with: ""
       fill_in "Key", with: ""
 

@@ -3,7 +3,7 @@
        class="table-fixed w-full text-left whitespace-no-wrap">
   <thead>
     <tr>
-      <th class="w-4/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
+      <th class="w-5/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
         <button
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
@@ -30,11 +30,7 @@
            Lead <span class="pl-1 font-bold"><%= arrow :lead, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-1/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
-        Edit
-      </th>
-      <th class="w-1/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
-        Del
+      <th class="w-1/12 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
       </th>
     </tr>
   </thead>
@@ -44,18 +40,32 @@
         <td class="px-4 py-2"><%= project.name %></td>
         <td class="px-4 py-2"><%= project.key %></td>
         <td class="px-4 py-2"><%= project.username %></td>
-        <td id="<%= "edit-project-#{index}" %>" class="px-4 py-2">
-          <% if policy(project).update? %>
-            <%= link_to edit_project_path(project) do
-              render_svg "pencil", styles: "h-6 text-gray-600 hover:text-white"
-            end %>
-          <% end %>
-        </td>
-        <td id="<%= "destroy-project-#{index}" %>" class="px-4 py-2 ">
-          <% if policy(project).destroy? %>
-            <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } do
-              render_svg "trash", styles: "h-6 text-gray-600 hover:text-white"
-            end %>
+        <td id="<%= "project-action-cell-#{index}" %>" class="">
+          <% if policy(project).update? || policy(project).destroy? %>
+            <div data-controller="dropdown"
+                 class="relative">
+              <button id='<%= "project-action-#{index}" %>'
+                      data-action="click->dropdown#toggle click@window->dropdown#hide"
+                      class="block h-6 border-2 border-transparent rounded focus:outline-none focus:border-white">
+                <%= render_svg "three_dots_vertical", styles: "text-gray-500 h-5" %>
+              </button>
+              <!-- menu links -->
+              <div data-target="dropdown.menu"
+                   class="z-10 absolute right-0 mt-2 py-2 w-28 hidden bg-white rounded-lg shadow-xl">
+                <% if policy(project).update? %>
+                  <%= link_to edit_project_path(project), class: "block px-4 py-2 rounded-t text-green-600 hover:bg-green-300 hover:-text-white" do %>
+                    <%= render_svg "pencil", styles: "h-6 inline-block" %>
+                    Edit
+                  <% end %>
+               <% end %>
+                <% if policy(project).destroy? %>
+                  <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } , class: "block px-4 py-2 rounded-b text-red-600 hover:bg-red-300 hover:-text-white" do %>
+                    <%= render_svg "trash", styles: "h-6 inline-block" %>
+                    Destroy
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </td>
       </tr>
