@@ -3,8 +3,9 @@
        class="table-fixed w-full text-left whitespace-no-wrap">
   <thead>
     <tr>
-      <th class="w-5/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
+      <th class="w-5/12 px-2 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
         <button
+           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="name"
@@ -12,8 +13,9 @@
            Name <span class="pl-1 font-bold"> <%= arrow :name, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+      <th class="w-3/12 px-2 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <button
+           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="key"
@@ -21,12 +23,13 @@
            Key <span class="pl-1 font-bold"><%= arrow :key, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-3/12 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
+      <th class="w-3/12 px-2 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <button
+           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="lead"
-           data-direction=<%= direction(sort) %>>
+           data-direction=<%= direction(sort)%>>
            Lead <span class="pl-1 font-bold"><%= arrow :lead, order_by, sort: sort %></span>
         </button>
       </th>
