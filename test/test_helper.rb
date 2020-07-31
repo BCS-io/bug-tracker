@@ -11,6 +11,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  Capybara.default_max_wait_time = 4
+
   # Add more helper methods to be used by all tests here...
   include FactoryBot::Syntax::Methods
 
