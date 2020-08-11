@@ -1,19 +1,19 @@
 <table class="table-fixed w-full text-left whitespace-no-wrap mb-2">
   <thead>
     <tr>
-      <th class="w-1/2 px-4 title-font tracking-wider font-medium text-white bg-gray-800 rounded-tl rounded-bl">
+      <th class="w-1/2 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800 rounded-tl rounded-bl">
         <%= link_to "Name #{arrow :name, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :name,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-1/4 px-4 title-font tracking-wider font-medium text-white bg-gray-800">
+      <th class="w-1/4 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <%= link_to "Key #{arrow :key, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :key,
                     direction: direction(sort) } %>
       </th>
-      <th class="w-1/4 px-4 title-font tracking-wider font-medium text-white bg-gray-800">
+      <th class="w-1/4 px-4 title-font tracking-wider font-medium text-gray-300 bg-gray-800">
         <%= link_to "Lead #{arrow :lead, order_by, sort: sort}", "#",
                     data: { reflex: "click->TabularReflex#order",
                     column_name: :lead,
