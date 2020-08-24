@@ -1,6 +1,7 @@
 module Projects
   class IssuesController < ApplicationController
     include Pagy::Backend
+    before_action :authenticate_account!
     before_action :set_project, only: [:index]
 
     def index
