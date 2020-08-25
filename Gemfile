@@ -17,6 +17,7 @@ gem "sass-rails", ">= 6"
 gem "scenic", "~> 1.5"
 gem "stimulus_reflex", "~> 3.2"
 gem "turbolinks", "~> 5"
+gem "view_component"
 gem "webpacker", github: "rails/webpacker"
 
 group :development, :test do
