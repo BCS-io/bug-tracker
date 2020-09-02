@@ -5,6 +5,10 @@ module ApplicationHelper
     inline_svg_pack_tag(filename, aria: true, nocomment: true, title: title, class: styles)
   end
 
+  def page_session_name(name = controller_name)
+    [name, "page"].join("_")
+  end
+
   def tailwind_classes_for(flash_type)
     {
       notice: "bg-green-400 border-green-700 text-white",

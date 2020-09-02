@@ -1,0 +1,45 @@
+<div class="flex flex-col items-center">
+    <nav class="flex text-gray-500">
+        <div class="h-8 w-24 flex justify-center items-center hover:text-gray-200 cursor-pointer">
+            <a href="#" id="previous"
+                        class="block flex items-center focus:z-10 focus:outline-none <%= "hidden" unless prev_page %>"
+                        aria-label="Previous"
+                        data-reflex="click->TabularReflex#paginate"
+                        data-reflex-root="<%= root %>"
+                        data-paginate-controller="<%= page_session_name %>"
+                        data-page="<%= prev_page %>">
+              <%= render_svg "chevron_left", styles: "text-green-300 h-4 w-4 fill-current mr-2", title: "previous" %>
+              <span>Previous</span>
+            </a>
+        </div>
+        <div class="flex h-8 font-medium ">
+          <% series.each do |item| %>
+            <% if item.is_a?(Integer) || item.is_a?(String) %>
+              <div class="w-8 hidden md:flex justify-center items-center hover:text-gray-200 cursor-pointer leading-5 border-t-2 <%= " border-gray-300 text-gray-300 " if item.is_a?(String) %> border-transparent">
+                <a href="#" class="w-full flex justify-center"
+                            data-reflex="click->TabularReflex#paginate"
+                            data-reflex-root="<%= root %>"
+                            data-paginate-controller="<%= page_session_name %>"
+                            data-page="<%= item %>">
+                  <%= item %>
+                </a>
+              </div>
+            <% elsif item == :gap %>
+              <span class="self-end px-2 pb-1">&hellip;</span>
+            <% end %>
+         <% end %>
+        </div>
+        <div class="h-8 w-24 flex justify-center items-center hover:text-gray-200 cursor-pointer">
+            <a href="#" id="next"
+                        class="block flex items-center focus:z-10 focus:outline-none  <%= "hidden" unless next_page %>"
+                        aria-label="Next"
+                        data-reflex="click->TabularReflex#paginate"
+                        data-reflex-root="<%= root %>"
+                        data-paginate-controller="<%= page_session_name%>"
+                        data-page="<%= next_page %>">
+              <span class="mr-2">Next</span>
+              <%= render_svg "chevron_right", styles: "text-green-300 h-4 w-4 fill-current", title: "next" %>
+            </a>
+        </div>
+    </nav>
+</div>
