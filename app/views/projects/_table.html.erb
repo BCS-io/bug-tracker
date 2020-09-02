@@ -40,9 +40,9 @@
   <tbody>
     <% projects.each_with_index do |project, index| %>
       <tr>
-        <td class="px-4 py-2"><%= project.name %></td>
-        <td class="hidden sm:block px-4 py-2"><%= project.key %></td>
-        <td class="px-4 py-2"><%= project.username %></td>
+        <td class="px-4 py-1"><%= project.name %></td>
+        <td class="hidden sm:block px-4 py-1"><%= project.key %></td>
+        <td class="px-4 py-1"><%= project.username %></td>
         <td id="<%= "project-action-cell-#{index}" %>" class="">
           <% if policy(project).update? || policy(project).destroy? %>
             <div data-controller="dropdown"
@@ -54,15 +54,15 @@
               </button>
               <!-- menu links -->
               <div data-target="dropdown.menu"
-                   class="z-10 absolute right-0 mt-2 py-2 w-28 hidden bg-white rounded-lg shadow-xl">
+                   class="z-10 absolute right-0 mt-2 py-1 w-28 hidden bg-white rounded-lg shadow-xl">
                 <% if policy(project).update? %>
-                  <%= link_to edit_project_path(project), class: "block px-4 py-2 rounded-t text-green-600 hover:bg-green-300 hover:-text-white" do %>
+                  <%= link_to edit_project_path(project), class: "block px-4 py-1 rounded-t text-green-800 hover:bg-green-300 hover:-text-white" do %>
                     <%= render_svg "pencil", styles: "h-6 inline-block" %>
                     Edit
                   <% end %>
                <% end %>
                 <% if policy(project).destroy? %>
-                  <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } , class: "block px-4 py-2 rounded-b text-red-600 hover:bg-red-300 hover:-text-white" do %>
+                  <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } , class: "block px-4 py-1 rounded-b text-red-600 hover:bg-red-300 hover:-text-white" do %>
                     <%= render_svg "trash", styles: "h-6 inline-block" %>
                     Destroy
                   <% end %>
