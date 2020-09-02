@@ -2,8 +2,8 @@
 <table id="projects-table"
        class="table-fixed w-full text-left whitespace-no-wrap">
   <thead>
-    <tr class="border-b border-gray-800">
-      <th class="w-6/12 sm:w-5/12 px-2 title-font tracking-wider font-medium text-gray-300 rounded-tl rounded-bl">
+    <tr class="text-gray-500 border-b border-gray-800">
+      <th class="w-6/12 sm:w-5/12 px-2 title-font tracking-wider font-medium rounded-tl rounded-bl">
         <button
            class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
@@ -13,7 +13,7 @@
            Name <span class="pl-1 font-bold"> <%= arrow :name, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="hidden sm:table-cell w-3/12 px-2 title-font tracking-wider font-medium text-gray-300">
+      <th class="hidden sm:table-cell w-3/12 px-2 title-font tracking-wider font-medium">
         <button
            class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
@@ -23,7 +23,7 @@
            Key <span class="pl-1 font-bold"><%= arrow :key, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-5/12 sm:w-3/12 px-2 title-font tracking-wider font-medium text-gray-300">
+      <th class="w-5/12 sm:w-3/12 px-2 title-font tracking-wider font-medium">
         <button
            class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
@@ -33,7 +33,7 @@
            Lead <span class="pl-1 font-bold"><%= arrow :lead, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-1/12 title-font tracking-wider font-medium text-gray-300">
+      <th class="w-1/12 title-font tracking-wider font-medium">
       </th>
     </tr>
   </thead>
