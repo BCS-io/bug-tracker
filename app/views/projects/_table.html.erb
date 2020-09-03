@@ -3,9 +3,9 @@
        class="table-fixed w-full text-left whitespace-no-wrap">
   <thead>
     <tr class="text-gray-500 border-b border-gray-800">
-      <th class="w-6/12 sm:w-5/12 px-2 title-font tracking-wider font-medium rounded-tl rounded-bl">
+      <th class="w-6/12 sm:w-5/12 pr-1 title-font tracking-wider font-medium rounded-tl rounded-bl">
         <button
-           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
+           class="btn pr-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="name"
@@ -13,9 +13,9 @@
            Name <span class="pl-1 font-bold"> <%= arrow :name, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="hidden sm:table-cell w-3/12 px-2 title-font tracking-wider font-medium">
+      <th class="hidden sm:table-cell w-3/12 title-font tracking-wider font-medium">
         <button
-           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
+           class="btn pr-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="key"
@@ -23,9 +23,9 @@
            Key <span class="pl-1 font-bold"><%= arrow :key, order_by, sort: sort %></span>
         </button>
       </th>
-      <th class="w-5/12 sm:w-3/12 px-2 title-font tracking-wider font-medium">
+      <th class="w-5/12 sm:w-3/12 title-font tracking-wider font-medium">
         <button
-           class="btn px-1 border border-transparent focus:outline-none focus:border-gray-500"
+           class="btn pr-1 border border-transparent focus:outline-none focus:border-gray-500"
            data-reflex="click->TabularReflex#order"
            data-reflex-root="#projects-table"
            data-column-name="lead"
@@ -40,9 +40,9 @@
   <tbody>
     <% projects.each_with_index do |project, index| %>
       <tr>
-        <td class="px-4 py-1"><%= project.name %></td>
-        <td class="hidden sm:block px-4 py-1"><%= project.key %></td>
-        <td class="px-4 py-1"><%= project.username %></td>
+        <td class="pr-1 py-1"><%= project.name %></td>
+        <td class="hidden sm:block pr-1 py-1"><%= project.key %></td>
+        <td class="pr-1 py-1"><%= project.username %></td>
         <td id="<%= "project-action-cell-#{index}" %>" class="">
           <% if policy(project).update? || policy(project).destroy? %>
             <div data-controller="dropdown"
