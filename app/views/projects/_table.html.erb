@@ -40,9 +40,9 @@
   <tbody>
     <% projects.each_with_index do |project, index| %>
       <tr>
-        <td class="pr-1 py-1"><%= project.name %></td>
-        <td class="hidden sm:block pr-1 py-1"><%= project.key %></td>
-        <td class="pr-1 py-1"><%= project.username %></td>
+        <td class="pr-1 py-1 truncate"><%= project.name %></td>
+        <td class="hidden sm:block pr-1 py-1 truncate"><%= project.key %></td>
+        <td class="pr-1 py-1 truncate"><%= project.username %></td>
         <td id="<%= "project-action-cell-#{index}" %>" class="">
           <% if policy(project).update? || policy(project).destroy? %>
             <div data-controller="dropdown"
