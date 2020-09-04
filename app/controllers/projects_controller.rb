@@ -1,13 +1,17 @@
 class ProjectsController < ApplicationController
+  include ApplicationHelper
+  include Pagy::Backend
   before_action :authenticate_account!
 
   def index
     @direction = permitted_direction(session[:direction])
     @order_by = ProjectTableColumn.new(session[:order_by]).safe_table_column
-    @projects = Project.includes(:lead)
+    projects = Project.includes(:lead)
       .joins(:lead)
       .select("projects.id, projects.name, projects.key, accounts.username as username")
       .order(ProjectTableColumn.new(@order_by).db_column => @direction)
+
+    @pagy, @projects = pagy(projects)
     authorize @projects
   end
 
