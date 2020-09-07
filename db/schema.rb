@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_080231) do
+ActiveRecord::Schema.define(version: 2020_07_07_192149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,4 +63,14 @@ ActiveRecord::Schema.define(version: 2020_07_07_080231) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+
+  create_view "project_searches", sql_definition: <<-SQL
+      SELECT projects.id,
+      projects.name,
+      projects.key,
+      projects.lead_id,
+      accounts.username
+     FROM (projects
+       JOIN accounts ON ((projects.lead_id = accounts.id)));
+  SQL
 end
