@@ -9,6 +9,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "inline_svg", "~> 1.7.0"
 gem "optimism", "~> 0.3.4"
 gem "pg", ">= 0.18", "< 2.0"
+gem "pg_search", "~> 2.3", ">= 2.3.2"
 gem "puma", "~> 4.1"
 gem "pundit", "~> 2.1"
 gem "rails", github: "rails/rails", branch: "6-0-stable"
