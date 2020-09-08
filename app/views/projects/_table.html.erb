@@ -38,13 +38,13 @@
     </tr>
   </thead>
   <tbody>
-    <% projects.each_with_index do |project, index| %>
+    <% project_searches.each_with_index do |ps, index| %>
       <tr>
-        <td class="pr-1 py-1 truncate"><%= project.name %></td>
-        <td class="hidden sm:block pr-1 py-1 truncate"><%= project.key %></td>
-        <td class="pr-1 py-1 truncate"><%= project.username %></td>
+        <td class="pr-1 py-1 truncate"><%= ps.name %></td>
+        <td class="hidden sm:block pr-1 py-1 truncate"><%= ps.key %></td>
+        <td class="pr-1 py-1 truncate"><%= ps.username %></td>
         <td id="<%= "project-action-cell-#{index}" %>" class="">
-          <% if policy(project).update? || policy(project).destroy? %>
+          <% if policy(ps).update? || policy(ps).destroy? %>
             <div data-controller="dropdown"
                  class="relative">
               <button id='<%= "project-action-#{index}" %>'
@@ -55,14 +55,14 @@
               <!-- menu links -->
               <div data-target="dropdown.menu"
                    class="z-10 absolute right-0 mt-2 py-1 w-28 hidden bg-white rounded-lg shadow-xl">
-                <% if policy(project).update? %>
-                  <%= link_to edit_project_path(project), class: "block px-4 py-1 rounded-t text-green-800 hover:bg-green-300 hover:-text-white" do %>
+                <% if policy(ps).update? %>
+                  <%= link_to edit_project_path(ps), class: "block px-4 py-1 rounded-t text-green-800 hover:bg-green-300 hover:-text-white" do %>
                     <%= render_svg "pencil", styles: "h-6 inline-block" %>
                     Edit
                   <% end %>
                <% end %>
-                <% if policy(project).destroy? %>
-                  <%= link_to project, method: :delete, data: { confirm: 'Are you sure?' } , class: "block px-4 py-1 rounded-b text-red-600 hover:bg-red-300 hover:-text-white" do %>
+                <% if policy(ps).destroy? %>
+                  <%= link_to project_path(ps.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "block px-4 py-1 rounded-b text-red-600 hover:bg-red-300 hover:-text-white" do %>
                     <%= render_svg "trash", styles: "h-6 inline-block" %>
                     Destroy
                   <% end %>

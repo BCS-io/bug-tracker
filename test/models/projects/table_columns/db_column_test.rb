@@ -12,7 +12,7 @@ module Projects
       end
 
       test "returns the correct sql column for lead" do
-        assert_equal "accounts.username", ProjectTableColumn.new("lead").db_column
+        assert_equal "username", ProjectTableColumn.new("lead").db_column
       end
     end
   end

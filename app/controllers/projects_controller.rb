@@ -8,14 +8,12 @@ class ProjectsController < ApplicationController
     @query = params[:query]
     @direction = permitted_direction(session[:direction])
     @order_by = ProjectTableColumn.new(session[:order_by]).safe_table_column
-    projects = Project.includes(:lead)
-      .joins(:lead)
-      .select("projects.id, projects.name, projects.key, accounts.username as username")
+    projects = ProjectSearch
       .order(ProjectTableColumn.new(@order_by).db_column => @direction)
 
-    projects = projects.search(@query) if @query.present?
-    @pagy, @projects = pagy(projects)
-    authorize @projects
+    projects = ProjectSearch.query(@query) if @query.present?
+    @pagy, @project_searches = pagy(projects)
+    authorize @project_searches
   end
 
   def new

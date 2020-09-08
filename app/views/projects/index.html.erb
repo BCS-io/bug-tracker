@@ -28,7 +28,7 @@
       <div id="search-results">
         <p class="hidden sm:block lead mb-2"><%= @pagy.count %> results found</p>
         <% if @pagy.count > 0 %>
-          <%= render "projects/table", projects: @projects, order_by: @order_by, sort: @direction %>
+          <%= render "projects/table", project_searches: @project_searches, order_by: @order_by, sort: @direction %>
           <div class="sm:mt-6">
             <%= render(PaginateComponent.new(pagy: @pagy, root: "#search-results")) %>
           </div>

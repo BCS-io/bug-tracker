@@ -1,7 +1,7 @@
 class ProjectTableColumn
   PROJECT_COLUMNS = {"name" => "name",
                      "key" => "key",
-                     "lead" => "accounts.username"}
+                     "lead" => "username"}
 
   def initialize(column)
     @column = column
