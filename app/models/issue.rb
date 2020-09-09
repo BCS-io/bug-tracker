@@ -9,5 +9,9 @@ class Issue < ApplicationRecord
   validates :status, inclusion: {in: statuses.keys}
   validates :work, inclusion: {in: works.keys}
 
+  scope :query, ->(query) {
+    query = sanitize_sql_like(query)
+    where("summary ILIKE ?", "%" + query + "%")
+  }
   scope :created_desc, -> { order(created_at: :desc) }
 end

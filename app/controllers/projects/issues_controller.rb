@@ -4,7 +4,9 @@ module Projects
     before_action :set_project, only: [:index]
 
     def index
+      @query = params[:query]
       issues = @project.issues.includes([:account]).created_desc
+      issues = issues.query(@query) if @query.present?
       @pagy, @issues = pagy(issues)
       authorize @issues
     end

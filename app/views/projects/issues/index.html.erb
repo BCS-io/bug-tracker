@@ -13,7 +13,10 @@
           <input id="search"
                  type="search"
                  class="form-control form-control-lg w-full py-2 pl-2 pr-12 rounded bg-gray-700 focus:outline-none focus:text-gray-900 focus:bg-white placeholder-gray-300 focus:placeholder-gray-400"
-                 placeholder="Search...">
+                 placeholder="Search..."
+                 value="<%= @query %>"
+                 data-reflex="input->SearchReflex#query"
+                 data-reflex-root="#search-results">
 
           <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
             <%= render_svg "search", styles: "text-gray-300 focus:text-gray-800 h-5 w-5 fill-current" %>
@@ -27,7 +30,7 @@
       <% end %>
     </div>
 
-    <div class="mt-4 flex flex-col border-b border-gray-700">
+    <div id="search-results" class="mt-4 flex flex-col border-b border-gray-700">
       <%= render(IssueItemComponent.with_collection(@issues)) %>
 
       <div class="mt-6">
