@@ -3,6 +3,7 @@ module Projects
     include Pagy::Backend
     before_action :authenticate_account!
     before_action :set_project, only: [:index, :new, :create]
+    before_action :set_issue, only: [:show]
 
     def index
       @query = params[:query]
@@ -10,6 +11,10 @@ module Projects
       issues = issues.query(@query) if @query.present?
       @pagy, @issues = pagy(issues)
       authorize @issues
+    end
+
+    def show
+      authorize @issue
     end
 
     def new
@@ -33,6 +38,10 @@ module Projects
 
     def set_project
       @project = Project.find(params[:project_id])
+    end
+
+    def set_issue
+      @issue = Issue.find(params[:id])
     end
 
     def issue_params
