@@ -1375,9 +1375,9 @@ alphanum-sort@^1.0.0:
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
 alpinejs@^2.4.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.5.0.tgz#16ee1a01d4a53410646a06c0e2c169341ade84c3"
-  integrity sha512-jGm3Q++iZyr9ORj6ztdraqk1mdS8C+nKyFzQcAoYJUcsY+F1vvIELHtvj6j2UU9r/DIgQXN4tQEvqwr6kXaqJw==
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/alpinejs/-/alpinejs-2.7.0.tgz#adcdb8da9b7d99bbcc020fd4fa058b78ec283bba"
+  integrity sha512-vz4Qu4p1830yfPTvhB8da84zIePoe6PGeR50z68gB/EAH5Ba4GeqixV6kuVDEBAv5yzHhUpTrESTDNBtBVpjmg==
 
 amdefine@>=0.0.4:
   version "1.0.1"
