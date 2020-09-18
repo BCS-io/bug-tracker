@@ -15,6 +15,7 @@
       </div>
       <h1 class="text-gray-100 text-xl"><%= summary %></h1>
     </div>
+    <%= render "projects/issues/summary_form", project: issue.project, issue: issue, class: "hidden" %>
     <div class="pt-1">
       <%= "##{id} opened #{created_ago} by #{username}" %><br>
       <%= status %>

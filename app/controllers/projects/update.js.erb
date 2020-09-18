@@ -1,0 +1,1 @@
+document.querySelector("#<%= dom_id(@project, @issue) %>").outerHTML = "<%=j render "issue" project: @project, issue: @issue %>"

@@ -1,1 +1,15 @@
-<%= @issue.summary %>
+<section class="text-gray-500 bg-gray-900 body-font">
+  <div class="container px-5 py-4 mx-auto">
+    <nav class="border-blue">
+      <%= link_to 'Projects', account_root_path, class: 'text-indigo-400' %> /
+      <%= link_to @issue.project.name, project_issues_path(@issue.project), class: 'text-indigo-400' %> /
+      <span class="text-gray-100">issue</span>
+    </nav>
+
+    <%= render(IssueComponent.new(issue: @issue, account: current_account)) %>
+
+    <div class="text-gray-100 bg-gray-800 body-font">
+      <span class="text-indigo-400"><%= @issue.account.username %></span>
+    </div>
+  </div>
+</section>

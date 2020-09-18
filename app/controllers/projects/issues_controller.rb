@@ -3,7 +3,7 @@ module Projects
     include Pagy::Backend
     before_action :authenticate_account!
     before_action :set_project, only: [:index, :new, :create]
-    before_action :set_issue, only: [:show]
+    before_action :set_issue, only: [:show, :edit, :update]
 
     def index
       @query = params[:query]
@@ -22,6 +22,9 @@ module Projects
       authorize @issue
     end
 
+    def edit
+    end
+
     def create
       @issue = @project.issues.build(issue_params)
       @issue.account = current_account
@@ -30,6 +33,18 @@ module Projects
         redirect_to project_issues_path(@issue.project), notice: "Issue was successfully created."
       else
         broadcast_errors @issue, issue_params
+      end
+      authorize @issue
+    end
+
+    def update
+      respond_to do |format|
+        if @issue.update(issue_params)
+          redirect_to([@issue.project, @issue], notice: "Issue was successfully updated.")
+          format.js
+        else
+          format.html { broadcast_errors @issue, issue_params }
+        end
       end
       authorize @issue
     end

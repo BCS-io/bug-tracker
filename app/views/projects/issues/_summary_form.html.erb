@@ -1,0 +1,19 @@
+<%= form_with(model: issue,
+              data: { target: "inline-edit.form" },
+              class: local_assigns[:class]) do |form| %>
+  <%= form.container_for :summary do %>
+    <%= form.text_field :summary, id: "summary", class: "input" %>
+    <%= form.error_for :summary, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <div class="flex mt-4 mb-6">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    <button
+        type="reset"
+        data-action="click->inline-edit#toggle"
+        class="flex items-center justify-center btn btn-outline ml-4 border-2 btn-primary:hover flex-shrink-0 text-xs md:text-sm focus:outline-none focus:border-white">
+      <%= render_svg "x", styles: "inline-block h-6 text-gray-300 focus:text-white hover:text-white fill-current" %>
+      <span class="hidden sm:inline-block sm:px-1">Cancel</span>
+    </button>
+  </div>
+<% end %>
