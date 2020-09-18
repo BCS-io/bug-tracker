@@ -72,6 +72,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Allow more files to watch
+        run: sudo sysctl fs.inotify.max_user_watches=12288 | sudo sysctl -p
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Ruby gem cache
