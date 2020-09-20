@@ -1,0 +1,24 @@
+<div data-controller="inline-edit"
+     class="flex flex-col pb-1 border-b-2 border-gray-700">
+  <div class="pt-2">
+    <div data-target="inline-edit.view">
+      <div class="float-left mr-2"><%= render(WorkBadgeComponent.new(work: work)) %></div>
+      <div class="float-right ml-2">
+        <% if policy(issue).update? %>
+          <button
+              data-action="click->inline-edit#toggle"
+              class="flex items-center justify-center btn btn-outline ml-4 h-8 border-2 btn-primary:hover flex-shrink-0 text-xs md:text-sm focus:outline-none focus:border-white">
+            <%= render_svg "pencil", styles: "inline-block h-6 text-gray-300 focus:text-white hover:text-white fill-current" %>
+            <span class="hidden sm:inline-block sm:px-1">Edit</span>
+          </button>
+        <% end %>
+      </div>
+      <h1 class="text-gray-100 text-xl"><%= summary %></h1>
+    </div>
+    <%= render "projects/issues/summary_form", project: issue.project, issue: issue, class: "hidden" %>
+    <div class="pt-1">
+      <%= "##{id} opened #{created_ago} by #{username}" %><br>
+      <%= status %>
+    </div>
+  </div>
+</div>

@@ -17,3 +17,11 @@ AllCops:
 
 Rails:
   Enabled: true
+
+Layout/HashAlignment:
+  Exclude:
+    - app/components/work_badge_component.rb
+
+Layout/ExtraSpacing:
+  Exclude:
+    - app/components/work_badge_component.rb

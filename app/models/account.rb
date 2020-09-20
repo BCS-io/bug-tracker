@@ -6,6 +6,7 @@ class Account < ApplicationRecord
     :rememberable, :validatable
 
   has_many :leads, class_name: "Project", foreign_key: "lead_id", inverse_of: "lead", dependent: :destroy
+  has_many :issues, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
   validates :role, inclusion: {in: roles.keys}
