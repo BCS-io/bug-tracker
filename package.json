@@ -4,6 +4,7 @@
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "^6.0.3-3",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.1.1",
@@ -14,6 +15,7 @@
     "stimulus_reflex": "^3.2.3",
     "tailwindcss": "^1.4.6",
     "tailwindcss-stimulus-components": "^2.0.5",
+    "trix": "^1.2.0",
     "turbolinks": "^5.2.0"
   },
   "scripts": {
