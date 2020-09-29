@@ -1,6 +1,7 @@
 class Issue < ApplicationRecord
   belongs_to :project
   belongs_to :account
+  has_many :comments, as: :commentable, dependent: :destroy
 
   enum work: {bug: 0, improvement: 1, task: 2, new_feature: 3, epic: 4}, _prefix: :work
   enum status: {open: 0, closed: 1}, _prefix: :status

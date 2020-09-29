@@ -6,6 +6,7 @@ MULTIPLIER = 10
 MAX_PROJECTS = 3 * MULTIPLIER
 MAX_DAYS_AGO = 100
 MAX_PROJECT_ISSUES = 5 * MULTIPLIER
+MAX_PROJECT_ISSUE_COMMENTS = 20 * MULTIPLIER
 
 Account.create!([
   {email: "admin@example.com", username: "admin", password: "password", password_confirmation: "password", role: 1},
@@ -26,5 +27,11 @@ MAX_PROJECTS.times do
       project: project,
       account: account,
       created_at: issue_created.days.ago)
+  end
+
+  rand(0...MAX_PROJECT_ISSUE_COMMENTS).times do
+    issue = Issue.order(Arel.sql("RANDOM()")).first
+    account = Account.order(Arel.sql("RANDOM()")).first
+    FactoryBot.create(:comment, account: account, commentable: issue)
   end
 end
