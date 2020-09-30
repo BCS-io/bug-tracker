@@ -1,0 +1,23 @@
+<%= form_with(model: issue, url: [project, issue]) do |form| %>
+  <%= form.container_for :work, class: "mt-6" do %>
+    <%= form.label :work, class: "label" %>
+    <%= form.select :work, Issue.works.map { |key, value| [key.humanize, key] }, { prompt: "Choose type of work" }, { class: "select w-56" } %>
+    <%= form.error_for :work, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <%= form.container_for :summary, class: "mt-6" do %>
+    <%= form.label :summary, class: "label" %>
+    <%= form.text_field :summary, class: "input" %>
+    <%= form.error_for :summary, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <%= form.container_for :status, class: "mt-6" do %>
+    <%= form.label :status, class: "label" %>
+    <%= form.select :status, Issue.statuses.map { |key, value| [key.humanize, key] }, {}, { class: "select w-40" } %>
+    <%= form.error_for :status, class: "text-sm text-red-500" %>
+  <% end %>
+
+  <div class="mt-10 mb-6">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

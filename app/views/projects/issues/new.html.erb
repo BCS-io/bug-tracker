@@ -1,0 +1,7 @@
+<%= content_for :primary_content do %>
+  <h1 class="text-4xl text-white">Create issue</h1>
+
+  <%= render 'form', project: @project, issue: @issue %>
+<% end %>
+
+<%= render "shared/basic_layout" %>
