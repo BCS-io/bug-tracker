@@ -40,9 +40,9 @@
   <tbody>
     <% project_searches.each_with_index do |ps, index| %>
       <tr>
-        <td class="pr-1 py-1 truncate"><%= ps.name %></td>
-        <td class="hidden sm:block pr-1 py-1 truncate"><%= ps.key %></td>
-        <td class="pr-1 py-1 truncate"><%= ps.username %></td>
+        <td class="pr-1 py-1 truncate"><%= link_to ps.name, project_issues_path(ps.id), class: "hover:text-white" %></td>
+        <td class="hidden sm:table-cell pr-1 py-1 truncate"><%= link_to ps.key, project_issues_path(ps.id), class: "hover:text-white" %></td>
+        <td class="pr-1 py-1 truncate"><%= link_to ps.username, project_issues_path(ps.id), class: "hover:text-white" %></td>
         <td id="<%= "project-action-cell-#{index}" %>" class="">
           <% if policy(ps).update? || policy(ps).destroy? %>
             <div data-controller="dropdown"

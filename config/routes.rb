@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :projects
+  resources :projects, shallow: true do
+    resources :issues, module: :projects
+  end
   get "/projects" => "projects#index", :as => :account_root
   devise_for :accounts
   get "pages/home"

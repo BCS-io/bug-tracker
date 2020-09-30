@@ -8,4 +8,6 @@ class Issue < ApplicationRecord
   validates :summary, :work, :status, presence: true
   validates :status, inclusion: {in: statuses.keys}
   validates :work, inclusion: {in: works.keys}
+
+  scope :created_desc, -> { order(created_at: :desc) }
 end

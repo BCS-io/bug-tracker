@@ -1,0 +1,38 @@
+<section class="text-gray-500 bg-gray-900 body-font">
+  <div class="container px-5 py-4 mx-auto">
+    <nav class="border-blue">
+      <%= link_to 'Projects', account_root_path, class: 'text-indigo-400' %> /
+      <span class="text-gray-100"><%= @project.name %></span>
+    </nav>
+
+    <h1 class="text-4xl text-gray-100">Issues</h1>
+
+    <div class="mt-4 flex justify-between items-center w-full mx-auto">
+      <div class="flex-shrink">
+        <div class="relative rounded-md shadow-sm">
+          <input id="search"
+                 type="search"
+                 class="form-control form-control-lg w-full py-2 pl-2 pr-12 rounded bg-gray-700 focus:outline-none focus:text-gray-900 focus:bg-white placeholder-gray-300 focus:placeholder-gray-400"
+                 placeholder="Search...">
+
+          <div class="absolute inset-y-0 right-0 mr-2 flex items-center">
+            <%= render_svg "search", styles: "text-gray-300 focus:text-gray-800 h-5 w-5 fill-current" %>
+         </div>
+        </div>
+      </div>
+
+      <%= link_to new_project_issue_path(@project), class: "flex items-center justify-center btn btn-outline ml-4 h-8 border-2 btn-primary:hover flex-shrink-0 text-xs md:text-sm focus:outline-none focus:border-white" do %>
+        <%= render_svg "plus", styles: "inline-block h-6 text-gray-300 focus:text-white hover:text-white fill-current" %>
+        <span class="hidden sm:inline-block sm:pr-1">Create issue</span>
+      <% end %>
+    </div>
+
+    <div class="mt-4 flex flex-col border-b border-gray-700">
+      <%= render(IssueItemComponent.with_collection(@issues)) %>
+
+      <div class="mt-6">
+        <%= render(PaginateComponent.new(pagy: @pagy, root: ".container")) %>
+      </div>
+    </div>
+  </div>
+</section>
