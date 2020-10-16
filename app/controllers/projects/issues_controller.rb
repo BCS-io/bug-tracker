@@ -14,11 +14,13 @@ module Projects
     end
 
     def show
+      @comments = @issue.comments.includes([:rich_text_words])
       authorize @issue
     end
 
     def new
       @issue = @project.issues.build
+      @issue.comments.build
       authorize @issue
     end
 
@@ -28,6 +30,7 @@ module Projects
     def create
       @issue = @project.issues.build(issue_params)
       @issue.account = current_account
+      @issue.comments.first.account = current_account
 
       if @issue.save
         redirect_to project_issues_path(@issue.project), notice: "Issue was successfully created."
@@ -60,7 +63,7 @@ module Projects
     end
 
     def issue_params
-      params.require(:issue).permit(:work, :summary, :status)
+      params.require(:issue).permit(:work, :summary, :status, comments_attributes: [:id, :words])
     end
   end
 end

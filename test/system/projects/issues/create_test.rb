@@ -24,6 +24,29 @@ module Projects
         assert_equal "open", issue.status
       end
 
+      test "creating an Issue with description" do
+        account = create(:account)
+        project = create(:project, lead: account)
+        sign_in account
+        visit project_issues_url(project)
+        click_on "Create issue"
+
+        select "Improvement", from: "Work"
+        fill_in "Summary", with: "My summary"
+        find("#editor").click.set("comment body")
+        select "Open", from: "Status"
+
+        click_on "Create Issue"
+
+        assert_selector "h1", text: "Issues"
+        assert_text "Issue was successfully created"
+        click_link "My summary"
+
+        assert_selector "span", text: "issue"
+        assert_selector "h1", text: "My summary"
+        assert_text "comment body"
+      end
+
       test "display error messages" do
         account = create(:account)
         project = create(:project, lead: account)

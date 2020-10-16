@@ -11,5 +11,9 @@
     <div class="text-gray-100 bg-gray-800 body-font">
       <span class="text-indigo-400"><%= @issue.account.username %></span>
     </div>
+    <% @comments.each do |comment| %>
+      <%= comment.words %>
+    <% end %>
+    <%= render partial: "comments/form", locals: { commentable: @issue } %>
   </div>
 </section>

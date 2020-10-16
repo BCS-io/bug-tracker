@@ -11,6 +11,17 @@
     <%= form.error_for :summary, class: "text-sm text-red-500" %>
   <% end %>
 
+  <%= form.fields_for :comments do |comment_form| %>
+    <%= comment_form.container_for :comment, class: "mt-6 field" do %>
+      <%= comment_form.hidden_field :id %>
+      <%= comment_form.hidden_field :commentable_id %>
+      <%= comment_form.hidden_field :commentable_type %>
+      <%= comment_form.label :words, "Description", class: "label"  %>
+      <%= comment_form.rich_text_area :words, id: "editor", class: "input" %>
+      <%= comment_form.error_for :words, class: "text-sm text-red-500" %>
+    <% end %>
+  <% end %>
+
   <%= form.container_for :status, class: "mt-6" do %>
     <%= form.label :status, class: "label" %>
     <%= form.select :status, Issue.statuses.map { |key, value| [key.humanize, key] }, {}, { class: "select w-40" } %>
