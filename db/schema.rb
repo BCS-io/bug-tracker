@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_112316) do
+ActiveRecord::Schema.define(version: 2020_10_19_135255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,18 @@ ActiveRecord::Schema.define(version: 2020_09_28_112316) do
     t.index ["work"], name: "index_issues_on_work"
   end
 
+  create_table "issues_events", force: :cascade do |t|
+    t.bigint "issue_id", null: false
+    t.string "action", null: false
+    t.string "eventable_type"
+    t.bigint "eventable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["eventable_id", "eventable_type"], name: "index_issues_events_on_eventable_id_and_eventable_type"
+    t.index ["eventable_type", "eventable_id"], name: "index_issues_events_on_eventable_type_and_eventable_id"
+    t.index ["issue_id"], name: "index_issues_events_on_issue_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.string "key", null: false
@@ -103,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_09_28_112316) do
   add_foreign_key "comments", "accounts"
   add_foreign_key "issues", "accounts"
   add_foreign_key "issues", "projects"
+  add_foreign_key "issues_events", "issues"
 
   create_view "project_searches", sql_definition: <<-SQL
       SELECT projects.id,
