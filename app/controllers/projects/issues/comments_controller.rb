@@ -3,6 +3,12 @@ module Projects
     class CommentsController < CommentsController
       before_action :set_commentable
 
+      def create
+        super
+        @commentable.events.create(action: controller_path.parameterize.underscore,
+                                   eventable: @comment)
+      end
+
       private
 
       def set_commentable

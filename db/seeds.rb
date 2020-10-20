@@ -32,6 +32,7 @@ MAX_PROJECTS.times do
   rand(0...MAX_PROJECT_ISSUE_COMMENTS).times do
     issue = Issue.order(Arel.sql("RANDOM()")).first
     account = Account.order(Arel.sql("RANDOM()")).first
-    FactoryBot.create(:comment, account: account, commentable: issue)
+    comment = FactoryBot.create(:comment, account: account, commentable: issue)
+    issue.events.create(eventable: comment, action: "projects_issues_comments")
   end
 end
